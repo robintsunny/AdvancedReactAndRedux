@@ -1,14 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import App from '../App'
+import {shallow} from 'enzyme'
+import App from 'components/App'
+import CommentBox from 'components/CommentBox'
+import CommentList from 'components/CommentList'
+
+beforeEach (() => {
+  var wrapped = shallow(<App />)
+})
 
 it('shows a comment box', () => {
-  const div = document.createElement('div')  
 
-  ReactDOM.render(<App />, div);
+  expect(wrapped.find(CommentBox).length).toEqual(1)
+  
+})
 
 
-  expect(div.innerHTML).toContain('Comment Box')
+it('shows a comment list', () => {
 
-  ReactDOM.unmountComponentAtNode(div)
+  expect(wrapped.find(CommentList).length).toEqual(1)
+
 })
