@@ -31,10 +31,11 @@ it('can fetch a list of comments and display them', (done) => {
 
     // expect(wrapped.find('li').length).toEqual(500)
     
-    setTimeout(() => {
+    moxios.wait(() => {
         wrapped.update()
         expect(wrapped.find('li').length).toEqual(2) // fetched #1 and fetched #2
         done();
+        wrapped.unmount()
     },100)
 })
 
