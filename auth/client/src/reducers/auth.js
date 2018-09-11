@@ -1,7 +1,12 @@
+import AUTH_USER from '../actions'
+
+
 const INITIAL_STATE = {
     authenticated: '',
     errorMessage: ''
 }
+
+
 
 
 
