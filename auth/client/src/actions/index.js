@@ -12,6 +12,17 @@ export const signup = (formProps, cb) => async dispatch => {
     }
 }
 
+export const signin = (formProps, cb) => async dispatch => {
+    try {
+        const response = await axios.post('http://localhost:4000/signin'. formProps)
+        dispatch({type: AUTH_USER, payload: response.data.token})
+        localStorage.setItem('token', response.date.token)
+        cb()
+    } catch (e) {
+        dispatch({type: AUTH_ERROR, payload: 'Invalid Login'})
+    }
+}
+
 export const signout = () => {
     localStorage.removeItem('token')
 
