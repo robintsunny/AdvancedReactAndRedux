@@ -7,7 +7,9 @@ import * as actions from '../../actions'
 
 class Signup extends React.Component {
     onSubmit = (formProps) => {
-        this.props.signup(formProps)
+        this.props.signup(formProps, () => {
+            this.props.history.push('/feature ')
+        })
     }
 
     render () {
@@ -32,6 +34,9 @@ class Signup extends React.Component {
                         component='input'
                      />
                 </fieldset>
+                <div>
+                    {this.props.errorMessage}
+                </div>
 
                 <button>Signup</button>
             </form>
@@ -39,7 +44,11 @@ class Signup extends React.Component {
     }
 }
 
+const msp = state => {
+    return {errorMessage: state.auth.errorMessage}
+}
+
 export default compose(
-    connect(null,actions),
+    connect(msp,actions),
     reduxForm({form: 'signup'})
 )(Signup)

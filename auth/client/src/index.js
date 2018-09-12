@@ -7,8 +7,9 @@ import reduxThunk from 'redux-thunk'
 
 import reducers from './reducers'
 import App from './components/App'
+import Feature from './components/Feature'
 import Welcome from './components/Welcome'
-import Signup from './components/auth/signup'
+import Signup from './components/auth/signu p'
 
 const store = createStore(
     reducers, 
@@ -23,6 +24,7 @@ ReactDOM.render(
         <App>
             <Route exact path='/' component={Welcome} />
             <Route exact path='/signup' component={Signup} />
+            <Route exact path='/feature' component={Feature} />
         </App>
     </BrowserRouter> 
     </Provider>,
